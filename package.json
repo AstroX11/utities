@@ -1,8 +1,8 @@
 {
   "name": "@astrox11/utily",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "A simple package that abstract and provide a simple base line for node functions",
-  "main": "./index.mjs",
+  "main": "./dist/index.mjs",
   "type": "module",
   "repository": {
     "type": "git",
@@ -12,7 +12,7 @@
   "license": "MIT",
   "private": false,
   "exports": {
-    ".": "./index.mjs"
+    ".": "./dist/index.mjs"
   },
   "devDependencies": {
     "@types/cheerio": "^0.22.35",
@@ -27,5 +27,8 @@
     "got": "^14.4.7",
     "node-webpmux": "^3.2.1",
     "sharp": "^0.34.1"
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }
