@@ -1,10 +1,13 @@
 {
   "name": "@astrox11/utily",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "A simple package that abstract and provide a simple base line for node functions",
   "main": "./dist/index.mjs",
   "type": "module",
-  "repository": "https://github.com/AstroX11/utities",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AstroX11/utities.git"
+  },
   "author": "AstroX11 <devastro0010@gmail.com>",
   "license": "MIT",
   "private": false,
