@@ -1,0 +1,12 @@
+export declare const GIFBufferToVideoBuffer: (image: Buffer) => Promise<Buffer>;
+export declare function audioToBlackVideo(input: Buffer): Promise<Buffer>;
+export declare function flipMedia(input: Buffer, direction: string): Promise<Buffer>;
+export declare function webpToImage(input: Buffer): Promise<Buffer>;
+export declare function convertToMp3(input: Buffer): Promise<Buffer>;
+export declare function toPTT(input: Buffer): Promise<Buffer>;
+export declare function toVideo(input: Buffer): Promise<Buffer>;
+export declare const cropToCircle: (input: Buffer) => Promise<Buffer>;
+export declare const isAnimatedWebp: (filePath: Buffer) => Promise<boolean>;
+export declare function convertWebPFile(media: Buffer): Promise<Buffer>;
+export declare const createSticker: (buffer: Buffer, author?: string, packname?: string) => Promise<Buffer>;
+export declare function trimVideo(input: Buffer, startTime: string, endTime: string): Promise<Buffer>;

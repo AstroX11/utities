@@ -1,6 +1,6 @@
 {
   "name": "@astrox11/utily",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "A simple package that abstract and provide a simple base line for node functions",
   "main": "./index.mjs",
   "type": "module",
@@ -15,12 +15,17 @@
     ".": "./index.mjs"
   },
   "devDependencies": {
+    "@types/cheerio": "^0.22.35",
     "@types/node": "^22.15.3",
     "typescript": "^5.8.3"
   },
   "dependencies": {
     "@hapi/boom": "^10.0.1",
+    "cheerio": "^1.0.0",
+    "file-type": "^20.5.0",
     "form-data": "^4.0.2",
-    "got": "^14.4.7"
+    "got": "^14.4.7",
+    "node-webpmux": "^3.2.1",
+    "sharp": "^0.34.1"
   }
 }
