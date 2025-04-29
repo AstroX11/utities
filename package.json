@@ -1,6 +1,6 @@
 {
   "name": "@astrox11/utily",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "A simple package that abstract and provide a simple base line for node functions",
   "main": "./dist/index.mjs",
   "type": "module",
@@ -12,7 +12,7 @@
   "license": "MIT",
   "private": false,
   "exports": {
-    ".": "./dist/index.mjs"
+    ".": "./index.mjs"
   },
   "devDependencies": {
     "@types/node": "^22.15.3",
