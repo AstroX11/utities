@@ -3,6 +3,7 @@
     "module": "NodeNext",
     "moduleResolution": "nodenext",
     "target": "ESNext",
+    "outDir": "./dist",
     "declaration": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
