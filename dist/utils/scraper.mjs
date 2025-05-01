@@ -97,21 +97,23 @@ export const technews = async () => {
     }
 };
 export async function lyrics(song) {
+    const searchUrl = `https://www.lyrics.com/lyrics/${encodeURIComponent(song)}`;
+    let searchHtml;
     try {
-        const url = `https://www.lyrics.com/lyric/7634035/${song}`;
-        const html = await fetch(url);
-        const $ = cheerio.load(html);
-        const lyrics = $('#lyric-body-text').text().trim();
-        const thumbnail = $('.artist-thumb img').first().attr('src') || '';
-        if (!lyrics) {
-            throw new Error('Lyrics not found');
-        }
-        return {
-            lyrics,
-            thumbnail,
-        };
+        searchHtml = await fetch(searchUrl);
     }
-    catch (error) {
-        throw new Boom(error);
+    catch {
+        return undefined;
     }
+    const $search = cheerio.load(searchHtml);
+    const artist = $search('.sec-lyric .lyric-meta-album-artist a')
+        .first()
+        .text()
+        .trim();
+    const lyrics = $search('.sec-lyric .lyric-body').first().text().trim();
+    const thumbnail = $search('.sec-lyric .album-thumb img').first().attr('src') || undefined;
+    if (!artist || !lyrics) {
+        return undefined;
+    }
+    return { artist, lyrics, thumbnail };
 }

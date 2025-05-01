@@ -116,26 +116,32 @@ export const technews = async (): Promise<string> => {
   throw new Error(error instanceof Error ? error.message : String(error));
  }
 };
-
 export async function lyrics(
  song: string,
-): Promise<{ lyrics: string; thumbnail: string }> {
+): Promise<
+ { artist: string; lyrics: string; thumbnail: string | undefined } | undefined
+> {
+ const searchUrl = `https://www.lyrics.com/lyrics/${encodeURIComponent(song)}`;
+
+ let searchHtml: string;
  try {
-  const url = `https://www.lyrics.com/lyric/7634035/${song}`;
-  const html = await fetch(url);
-  const $ = cheerio.load(html);
-  const lyrics = $('#lyric-body-text').text().trim();
-  const thumbnail = $('.artist-thumb img').first().attr('src') || '';
-
-  if (!lyrics) {
-   throw new Error('Lyrics not found');
-  }
-
-  return {
-   lyrics,
-   thumbnail,
-  };
- } catch (error) {
-  throw new Boom(error as Error);
+  searchHtml = await fetch(searchUrl);
+ } catch {
+  return undefined;
  }
+
+ const $search = cheerio.load(searchHtml);
+ const artist = $search('.sec-lyric .lyric-meta-album-artist a')
+  .first()
+  .text()
+  .trim();
+ const lyrics = $search('.sec-lyric .lyric-body').first().text().trim();
+ const thumbnail =
+  $search('.sec-lyric .album-thumb img').first().attr('src') || undefined;
+
+ if (!artist || !lyrics) {
+  return undefined;
+ }
+
+ return { artist, lyrics, thumbnail };
 }

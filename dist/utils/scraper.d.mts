@@ -11,6 +11,7 @@ export declare const wabetanews: () => Promise<string>;
  */
 export declare const technews: () => Promise<string>;
 export declare function lyrics(song: string): Promise<{
+    artist: string;
     lyrics: string;
-    thumbnail: string;
-}>;
+    thumbnail: string | undefined;
+} | undefined>;
