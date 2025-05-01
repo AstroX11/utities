@@ -116,3 +116,26 @@ export const technews = async (): Promise<string> => {
   throw new Error(error instanceof Error ? error.message : String(error));
  }
 };
+
+export async function lyrics(
+ song: string,
+): Promise<{ lyrics: string; thumbnail: string }> {
+ try {
+  const url = `https://www.lyrics.com/lyric/7634035/${song}`;
+  const html = await fetch(url);
+  const $ = cheerio.load(html);
+  const lyrics = $('#lyric-body-text').text().trim();
+  const thumbnail = $('.artist-thumb img').first().attr('src') || '';
+
+  if (!lyrics) {
+   throw new Error('Lyrics not found');
+  }
+
+  return {
+   lyrics,
+   thumbnail,
+  };
+ } catch (error) {
+  throw new Boom(error as Error);
+ }
+}
